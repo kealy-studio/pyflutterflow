@@ -1,5 +1,5 @@
 from typing import Generic
-from beanie import PydanticObjectId
+from uuid import uuid4
 from pyflutterflow.paginator import Params, Page
 from pyflutterflow.database.firestore.firestore_client import FirestoreClient
 from pyflutterflow.database.interface import BaseRepositoryInterface
@@ -39,7 +39,7 @@ class FirestoreRepository(BaseRepositoryInterface[ModelType, CreateSchemaType, U
     async def create(self, data: CreateSchemaType, current_user: FirebaseUser, **kwargs) -> ModelType:
         data = data.to_dict()
         data['user_id'] = current_user.uid
-        data['id'] = kwargs.get('id', str(PydanticObjectId()))
+        data['id'] = kwargs.get('id', str(uuid4()))
         return await self.model(**data).fs_create()
 
     async def update(self, pk: str, data: UpdateSchemaType, current_user: FirebaseUser) -> ModelType:
