@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pyflutterflow"
-version = "0.4.5"
+version = "0.5.1"
 description = "The companion python library to Flutterflow"
 authors = ["John Kealy <john@kealy.studio>"]
 license = "MIT"
@@ -20,24 +20,23 @@ exclude = [
 
 
 [tool.poetry.dependencies]
-python = "^3.11"
-beanie = "^1.27.0"
-fastapi = "^0.115.2"
+python = ">=3.10,<3.13"
+fastapi = "^0.115.8"
+uvicorn = "^0.34.0"
 requests = "^2.32.3"
-grpcio = "1.60.1"
 httpx = "^0.27.2"
-pytest = "^8.3.3"
-pytest-asyncio = "^0.24.0"
-pydantic-settings = "^2.6.0"
-pydantic = "^2.9.2"
-jinja2 = "^3.1.4"
-google-cloud-firestore = "^2.19.0"
-firebase-admin = "^6.5.0"
-supabase = "^2.9.1"
-fastapi-pagination = "^0.12.31"
-cloudinary = "^1.41.0"
-resend = "^2.4.0"
-python-multipart = "^0.0.19"
+pytest = "^8.3.4"
+pytest-asyncio = "^0.25.3"
+pydantic-settings = "^2.8.0"
+pydantic = "^2.10.6"
+jinja2 = "^3.1.5"
+google-cloud-firestore = "^2.20.0"
+firebase-admin = "^6.6.0"
+supabase = "^2.13.0"
+cloudinary = "^1.42.2"
+resend = "^2.6.0"
+python-multipart = "^0.0.20"
+
 
 
 [build-system]

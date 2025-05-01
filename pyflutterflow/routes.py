@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends, UploadFile, File
+from fastapi.responses import HTMLResponse
 from starlette.responses import FileResponse
 from pyflutterflow.logs import get_logger
 from pyflutterflow import PyFlutterflow
@@ -19,6 +20,21 @@ router = APIRouter(
 
 router.include_router(webpages_router)
 router.include_router(notifications_router)
+
+
+@router.get("/", response_class=HTMLResponse)
+async def root():
+    html_content = """
+    <html>
+        <body>
+            <h1>The Python API</h1>
+            <p>This is the API root. Visit <a href="/docs">/docs</a> to see the available
+            endpoints, or <a href="/dashboard">/dashboard</a> to go to the admin portal.</p>
+        </body>
+    </html>
+    """
+    return HTMLResponse(content=html_content, status_code=200)
+
 
 @router.get("/configure")
 async def serve_vue_config():
