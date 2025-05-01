@@ -101,8 +101,8 @@ async def get_users_list(_: FirebaseUser = Depends(get_admin_user)) -> list[Fire
             data = user._data
             users_list.append(FirebaseAuthUser(
                 uid=data.get('localId'),
-                email=data.get('email'),
-                display_name=data.get('displayName'),
+                email=data.get('email') or constants.GUEST_EMAIL,
+                display_name=data.get('displayName') or 'Unnamed',
                 photo_url=data.get('photoUrl'),
                 last_login_at=data.get('lastLoginAt'),
                 created_at=data.get('createdAt'),
